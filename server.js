@@ -1,14 +1,20 @@
 const express = require('express');
 const client = require('./connection.js');
+const path = require('path');
 
 function server() {
     const app = express();
     app.use(express.json());
     client.connect();
   
-  app.get('/', (req, res) => {
-      res.sendFile(__dirname + '/index.html');
+
+    // index.html の送信
+    app.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname, 'index.html'));
     });
+    
+    // 静的ファイルの提供
+    app.use(express.static(__dirname));
     
     app.post('/api/comics', (req, res) => {
         const comic = req.body;
@@ -24,10 +30,9 @@ function server() {
     });
     
     app.get('/api/comics', (req, res) => {
-        const query = `SELECT DISTINCT title FROM comic;`
+        const query = `SELECT id, title FROM comic ORDER BY id;`
         client.query(query, (err, result) => {
             if (!err) {
-                // console.log(result.rows);
                 res.status(200).send(result.rows);
             } else {
                 console.error(err.message);
@@ -47,7 +52,6 @@ function server() {
         }
         client.query(query, (err, result) => {
             if (!err) {
-                console.log(result);
                 res.status(200).send(req.body);
             } else {
                 console.error(err.message);
@@ -67,7 +71,6 @@ function server() {
         }
         client.query(query, (err, result) => {
             if (!err) {
-                console.log(result);
                 res.status(200).send(req.body);
             } else {
                 console.error(err.message);
