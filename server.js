@@ -2,15 +2,15 @@ const express = require('express');
 const client = require('./connection.js');
 
 function server() {
-  const app = express();
-  app.use(express.json());
+    const app = express();
+    app.use(express.json());
+    client.connect();
   
   app.get('/', (req, res) => {
       res.sendFile(__dirname + '/index.html');
     });
     
-    app.post('/comics', (req, res) => {
-        client.connect();
+    app.post('/api/comics', (req, res) => {
         const comic = req.body;
         const query = `INSERT INTO comic(title) VALUES('${comic.title}');`;
     
@@ -23,13 +23,32 @@ function server() {
         });
     });
     
-    app.get('/comics', (req, res) => {
-        client.connect();
+    app.get('/api/comics', (req, res) => {
         const query = `SELECT DISTINCT title FROM comic;`
         client.query(query, (err, result) => {
             if (!err) {
                 // console.log(result.rows);
                 res.status(200).send(result.rows);
+            } else {
+                console.error(err.message);
+            }
+        });
+    })
+    
+    app.patch('/api/comics/:idOrTitle', (req, res) => {
+        const param = req.params.idOrTitle;
+        let query = '';
+        if (!isNaN(parseInt(param))) {
+          // param = id
+          query = `UPDATE comic SET title = '${req.body.title}' WHERE id = ${param};`
+        } else {
+          // param = name
+          query = `UPDATE comic SET title = '${req.body.title}' WHERE title = '${param}';`
+        }
+        client.query(query, (err, result) => {
+            if (!err) {
+                console.log(result);
+                res.status(200).send(req.body);
             } else {
                 console.error(err.message);
             }
