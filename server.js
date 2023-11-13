@@ -12,17 +12,29 @@ function server() {
     app.post('/comics', (req, res) => {
         client.connect();
         const comic = req.body;
-        let insertQuery = `INSERT INTO comic(title) VALUES('${comic.title}');`;
+        const query = `INSERT INTO comic(title) VALUES('${comic.title}');`;
     
-        client.query(insertQuery, (err, result) => {
+        client.query(query, (err, result) => {
           if (!err) {
             res.status(200).send(comic);
           } else {
             console.error(err.message);
           }
-          client.end();
         });
     });
+    
+    app.get('/comics', (req, res) => {
+        client.connect();
+        const query = `SELECT DISTINCT title FROM comic;`
+        client.query(query, (err, result) => {
+            if (!err) {
+                // console.log(result.rows);
+                res.status(200).send(result.rows);
+            } else {
+                console.error(err.message);
+            }
+        });
+    })
 
   return app;
 }

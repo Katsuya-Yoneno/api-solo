@@ -13,4 +13,11 @@ describe('should add comic with post api', () => {
         expect(res.statusCode).to.equal(200);
         expect(res.body.title).to.equal('JOJO');
     });
-})
+});
+
+describe('should return all comics with get api', () => {
+    it('should return all comics', async() => {
+        const res = await chai.request(server()).get('/comics');
+        expect(res.statusCode).to.equal(200);
+    });
+});
