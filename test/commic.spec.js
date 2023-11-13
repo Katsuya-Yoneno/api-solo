@@ -35,3 +35,15 @@ describe('should modify a info of comic with patch api', () => {
         expect(res.statusCode).to.equal(200);
     });
 });
+
+describe('should delete comic with delete api', () => {
+    it('should delete a comic by id', async() => {
+        const res = await chai.request(server()).delete('/api/comics/1')
+        expect(res.statusCode).to.equal(200);
+    });
+    
+    it('should delete a comic by id', async() => {
+        const res = await chai.request(server()).delete('/api/comics/BREACH')
+        expect(res.statusCode).to.equal(200);
+    });
+});
