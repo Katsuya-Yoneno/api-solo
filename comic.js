@@ -13,7 +13,7 @@ function updateScreen() {
                 row.innerHTML = 
                 `<td>${comic.id}</td>
                 <td>${comic.title}</td>
-                <td><button onclick="deleteComic('${comic.id}')">削除</button></td>`;
+                <td><button class='delete-button' onclick="deleteComic('${comic.id}')">削除</button></td>`;
                 tableBody.appendChild(row);
             });
         })
@@ -23,22 +23,33 @@ function updateScreen() {
 function addComic() {
     const titleInput = document.getElementById('title');
     const title = titleInput.value;
-
-    fetch('/api/comics', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ title }),
-    })
-    .then(response => response.json())
-    .then(newComic => {
-        console.log('New Comic:', newComic);
-        updateScreen();
-        titleInput.value = '';
-
-    })
-    .catch(error => console.error(error));
+    const errorBody = document.getElementById('error-message');
+    if (title === '') {
+        errorBody.innerHTML = `
+            <div class='error'>
+                <p>タイトルが入力されていません。</p>
+            </div>
+        `;
+        errorBody.append;
+        return;
+    } else {
+        errorBody.innerHTML = ``;
+        fetch('/api/comics', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title }),
+        })
+        .then(response => response.json())
+        .then(newComic => {
+            console.log('New Comic:', newComic);
+            updateScreen();
+            titleInput.value = '';
+    
+        })
+        .catch(error => console.error(error));
+    }
 }
 
 function deleteComic(comicId) {

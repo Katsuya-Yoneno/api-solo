@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="comic.js"></script>
+    <link rel="stylesheet" href="comic.css">
     <title>Comic List</title>
 </head>
 <body>
@@ -13,20 +14,21 @@
 <table border="1">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Title</th>
+            <th class="id">ID</th>
+            <th class="'title">Title</th>
         </tr>
     </thead>
     <tbody id="comicTableBody">
         
     </tbody>
 </table>
-
+<br>
 <form id="addComicForm">
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" required>
     <button type="button" onclick="addComic()">追加</button>
 </form>
+<div id="error-message"></div>
 
 </body>
 </html>
