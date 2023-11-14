@@ -1,39 +1,43 @@
 {
-  "name": "api-solo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "npm run seed & mocha --exit",
-    "start": "node ./index.js",
-    "dev": "nodemon ./index.js",
-    "lint": "eslint --fix --ext .js .",
-    "migrate": "knex migrate:latest",
-    "seed": "knex seed:run"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Katsuya-Yoneno/api-solo.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Katsuya-Yoneno/api-solo/issues"
-  },
-  "homepage": "https://github.com/Katsuya-Yoneno/api-solo#readme",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "knex": "^3.0.1",
-    "nodemon": "^3.0.1",
-    "pg": "^8.11.3"
-  },
-  "devDependencies": {
-    "chai": "^4.3.10",
-    "chai-http": "^4.4.0",
-    "eslint": "^8.53.0",
-    "mocha": "^10.2.0"
-  }
+    "name": "api-solo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "npm run seed & mocha --exit",
+        "start": "node ./index.js",
+        "dev": "nodemon ./index.js",
+        "lint": "eslint --fix --ext .js .",
+        "migrate": "knex migrate:latest",
+        "seed": "knex seed:run",
+        "format": "prettier . --write"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Katsuya-Yoneno/api-solo.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Katsuya-Yoneno/api-solo/issues"
+    },
+    "homepage": "https://github.com/Katsuya-Yoneno/api-solo#readme",
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "knex": "^3.0.1",
+        "node-fetch": "^3.3.2",
+        "nodemon": "^3.0.1",
+        "pg": "^8.11.3",
+        "prettier": "^3.1.0",
+        "underscore": "^1.13.6"
+    },
+    "devDependencies": {
+        "chai": "^4.3.10",
+        "chai-http": "^4.4.0",
+        "eslint": "^8.53.0",
+        "mocha": "^10.2.0"
+    }
 }

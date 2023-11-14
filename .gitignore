@@ -1,3 +1,4 @@
 node_modules
 .env.local
 memo.md
+api_test.js

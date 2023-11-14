@@ -1,95 +1,121 @@
-
 body {
     font-family: 'Arial', sans-serif;
     margin: 20px;
-  }
-  
-  h1 {
+}
+
+h1 {
     color: #333;
-  }
-  
-  form {
+}
+
+form {
     margin-bottom: 20px;
-  }
-  
-  table {
+}
+
+table {
     width: 500px;
     border: none;
     margin-top: 20px;
-  }
-  
-  th, td {
+}
+
+th,
+td {
     border: none;
     padding: 8px;
     text-align: left;
-  }
-  
-  th {
+}
+
+th {
     background-color: #f2f2f2;
-  }
-  
-  button {
-    background-color: #4CAF50;
+}
+
+button {
+    background-color: #4caf50;
     color: white;
     padding: 8px 16px;
     border: none;
     cursor: pointer;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #45a049;
-  }
-  
-  td:hover {
+}
+
+td:hover {
     /* background-color: #f2f2f2; */
-  }
-  
-  .header {
-    background-color: #C8E6A3;
+}
+
+.header {
+    background-color: #c8e6a3;
     width: 500px;
-  }
-  
-  .id {
+}
+
+.id {
     width: 20px;
-  }
-  
-  .title {
+}
+
+.title {
     width: 50px;
-  }
-  
-  .delete-button {
-    background-color: #FF3300;
+}
+
+.delete-button {
+    background-color: #ff3300;
     color: white;
     padding: 8px 16px;
     border: none;
     cursor: pointer;
-  }
-  
-  .delete-button:hover {
-    background-color: #CC3300;
-  }
-  
-  .error {
+}
+
+.delete-button:hover {
+    background-color: #cc3300;
+}
+
+.error {
     color: red;
-  }
-  
-  .inpval {
+}
+
+.inpval {
     border: 1px;
     solid: #888;
-  }
-  
-  .edit-button {
-    background-color: #4CAF50;
+}
+
+.edit-button {
+    background-color: #4caf50;
     color: white;
     padding: 8px 16px;
     border: none;
     cursor: pointer;
-  }
-  
-  .edit-button:hover {
+}
+
+.edit-button:hover {
     background-color: #45a049;
-  }
-  
-  .add-title {
+}
+
+.add-title {
     height: 35px;
-  }
+}
+
+.comic {
+    display: flex;
+    width: 500px;
+    border: 3px solid #ddd; /* ボーダーのスタイルを指定 */
+    background-color: #e6ffe9;
+}
+
+.comic .image {
+    flex: 0 0 200px; /* 画像サイズ指定 */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.comic .text {
+    flex: 1; /* 画像以外の部分が残りのスペースを占める */
+    margin: 0 0 0 20px;
+    padding: 0;
+}
+
+/* 追加：テーブルのセルに padding を追加 */
+table td {
+    padding: 10px;
+}

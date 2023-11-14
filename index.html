@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,29 +8,40 @@
     <link rel="stylesheet" href="comic.css">
     <title>Comic List</title>
 </head>
+
 <body>
-
-<h1 class="header">Comic List</h1>
-<div class="main">
-    <table border="1">
-        <thead>
-            <tr>
-                <th class="id">ID</th>
-                <th class="'title">Title</th>
-            </tr>
-        </thead>
-        <tbody id="comicTableBody">
-            
-        </tbody>
-    </table>
+    <h1 class="header">My Comic List</h1>
+    <div class="my-comic-list">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th class="id">ID</th>
+                    <th class="'title">Title</th>
+                </tr>
+            </thead>
+            <tbody id="comicTableBody">
+            </tbody>
+        </table>
+        <br>
+        <form id="addComicForm">
+            <label for="title">Title:</label>
+            <input type="text" class="add-title" id="title" name="title" required>
+            <button type="button" onclick="addComic()">追加</button>
+        </form>
+        <div id="error-message">
+        </div>
+    </div>
     <br>
-    <form id="addComicForm">
-        <label for="title">Title:</label>
-        <input type="text" class="add-title" id="title" name="title" required>
-        <button type="button" onclick="addComic()">追加</button>
-    </form>
-    <div id="error-message"></div>
-</div>
-
+    <h1 class="header">Free Comic Seach</h1>
+    <div class="search-comic-list">
+        <input class="search-input" id="search-input" type="text">
+        <button class="search-button" onclick="search()">検索</button>
+        <div>
+            <h2 class="mb8">検索結果</h2>
+            <div id="$results">
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
