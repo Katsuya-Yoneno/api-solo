@@ -53,4 +53,11 @@ npm run start
 ```
 
 -   apiをコールするデモ用フロントエンドサイトを表示可能
+
     ![Alt text](image.png)
+
+## おまけ
+外部APIのコールのお勉強がてら[Google Books APIs](https://developers.google.com/books?hl=ja)を使って簡単な書籍検索機能をつけました。検索精度は微妙ですが、著者名やタイトルで
+曖昧検索が可能です。
+
+![Alt text](image-1.png)
