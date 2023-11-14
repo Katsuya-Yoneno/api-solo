@@ -12,8 +12,11 @@ function updateScreen() {
                 const row = document.createElement('tr');
                 row.innerHTML = 
                 `<td>${comic.id}</td>
-                <td>${comic.title}</td>
-                <td><button class='delete-button' onclick="deleteComic('${comic.id}')">削除</button></td>`;
+                <td><input class="inpval" type="text" id="txt${comic.id}" value="${comic.title}"></td>
+                <td>
+                <input class="edit-button" type="button" id="edtBtn${comic.id}" value="編集" onclick="editRow(${comic.id})">
+                <button class="delete-button" onclick="deleteComic('${comic.id}')">削除</button>
+                </td>`
                 tableBody.appendChild(row);
             });
         })
@@ -62,4 +65,36 @@ function deleteComic(comicId) {
         updateScreen();
     })
     .catch(error => console.error(error));
+}
+
+function editRow(comicId) {
+    var objInp = document.getElementById("txt" + comicId);
+    var objBtn = document.getElementById("edtBtn" + comicId);
+
+    if (!objInp || !objBtn)
+        return;
+
+    // モードの切り替えはボタンの値で判定  
+    if (objBtn.value == "編集") {
+        objInp.readOnly = false;
+        objInp.focus();
+        objBtn.value = "確定";
+    } else {
+        objInp.style.cssText = "border:none;"  
+        objInp.readOnly = true;
+        objBtn.value = "編集";
+        fetch(`/api/comics/${comicId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({title: objInp.value}),
+        })
+        .then(response => response.json())
+        .then(editedComic => {
+            console.log('Edited Comic:',editedComic);
+            updateScreen();
+        })
+        .catch(error => console.error(error));
+    }
 }
